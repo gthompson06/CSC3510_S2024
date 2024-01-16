@@ -38,10 +38,12 @@ class IntegerCalculatorTest {
         IntegerCalculator ICalc = new IntegerCalculator();
         int x =  4;
         int y =  0;
+        String expectedErrorMsg = "Cannot Divide By Zero";
         //Act & Assert
         ArithmeticException AExcept = assertThrows( ArithmeticException.class, () ->{
             ICalc.integerDivision(x,y);
-        }, "Divive By Zer Should throw exception");
+        }, "Divide By Zer Should throw exception");
+        assertEquals( expectedErrorMsg, AExcept.getMessage() );
     }
     @DisplayName("Subtraction 4-2=2")
     @Test
@@ -50,5 +52,33 @@ class IntegerCalculatorTest {
         int res = ICalc.integerDivision( 4, 2);
         int expect = 2;
         assertEquals( expect, res ,"4-2 did not produce 2");
+    }
+    @DisplayName("Subtraction 4-2=2")
+    @Test
+    void testIntegerSubtraction_Neg4MinusNeg2_ShouldBe_2() {
+        //Arrange
+        IntegerCalculator ICalc = new IntegerCalculator();
+        int x = 2;
+        int y = 4;
+        int expect = -2;
+        // Act
+        int res = ICalc.integerSubtraction( x, y);
+        // Assert
+        assertEquals( expect, res ,"4-2 did not produce 2");
+    }
+    @DisplayName("Subtraction MinInteger Minus 1 Exception")
+    @Test
+    void testIntegerSubtraction_MinIntMinus1_shouldBeException() {
+        //Arrange
+        IntegerCalculator ICalc = new IntegerCalculator();
+        int x = Integer.MIN_VALUE;
+        int y = 1;
+        int expect = Integer.MIN_VALUE - 1;
+        // Act
+        int res = ICalc.integerSubtraction( x, y);
+        System.out.printf("Subtraction res=%s", res);
+
+        // Assert
+        assertEquals( expect, res ,"Except exception when less than min value");
     }
 }
