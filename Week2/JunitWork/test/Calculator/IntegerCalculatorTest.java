@@ -9,13 +9,19 @@ class IntegerCalculatorTest {
     @DisplayName("Div 1/2 = 0")
     @Test
     void testIntegerDivision_1DividedBy2_ShouldBe_0() {
+        //Arrange
         IntegerCalculator ICalc = new IntegerCalculator();
         int x = 1;
         int y = 2;
         int expect = x/y;
+        // Act
         int res = ICalc.integerDivision( x, y);
-        String msg = String.format( "Division %s/%s did not product %s", x, y, res);
-        assertEquals( expect, res, msg );
+        //Assert
+        assertEquals( expect, res, () -> "Division" + x + "/" + 4 + "Did not produce " + res );
+//        assertEquals( expect, res, () -> {
+//            String msg = String.format("Division %s/%s did not product %s", x, y, res);
+//            return msg;
+//        });
     }
     @Test
     @DisplayName("Div 4/2=2")
@@ -24,6 +30,18 @@ class IntegerCalculatorTest {
         int res = ICalc.integerDivision( 4, 2);
         int expect = 2;
         assertEquals( expect, res, "4/2 did not produce 2");
+    }
+    @Test
+    @DisplayName("Div 4/0 => exception")
+    void testIntegerDivision_4DiividedBy0_ShouldBe_Exception() {
+        // Arrange
+        IntegerCalculator ICalc = new IntegerCalculator();
+        int x =  4;
+        int y =  0;
+        //Act & Assert
+        ArithmeticException AExcept = assertThrows( ArithmeticException.class, () ->{
+            ICalc.integerDivision(x,y);
+        }, "Divive By Zer Should throw exception");
     }
     @DisplayName("Subtraction 4-2=2")
     @Test
