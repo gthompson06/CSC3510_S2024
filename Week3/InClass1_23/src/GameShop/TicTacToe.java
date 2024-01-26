@@ -8,12 +8,21 @@ public class TicTacToe {
     }
     public boolean validToken( char tok ){
         // Menton that I changet these lines
-        if ( Character.toUpperCase('X') == tok ||
-             Character.toUpperCase('O') == tok ){
+        if ( Character.toUpperCase('X') == Character.toUpperCase(tok) ||
+             Character.toUpperCase('O') == Character.toUpperCase(tok) ){
             return true;
         }
         return false;
-
+    }
+    public int getLargest( int x, int y ){
+        int largest = x;
+        if ( y > x ) largest = y;
+        return largest;
+    }
+    public String getLargestString( String x, String y ){
+        String largest = x;
+        if ( y.length() > x.length()  ) largest = y;
+        return largest;
     }
     public boolean isWinner(char tok) {
         boolean hasWon = false;
