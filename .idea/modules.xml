@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CSC3510_S2024.iml" filepath="$PROJECT_DIR$/.idea/CSC3510_S2024.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HW/HW.iml" filepath="$PROJECT_DIR$/HW/HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week2/JunitWork/JunitWork.iml" filepath="$PROJECT_DIR$/Week2/JunitWork/JunitWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week2/ReviewALittleString/ReviewALittleString.iml" filepath="$PROJECT_DIR$/Week2/ReviewALittleString/ReviewALittleString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week2/StairMaster/StairMaster.iml" filepath="$PROJECT_DIR$/Week2/StairMaster/StairMaster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week2/TDD/TDD.iml" filepath="$PROJECT_DIR$/Week2/TDD/TDD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week1/Week1.iml" filepath="$PROJECT_DIR$/Week1/Week1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week3/Week3.iml" filepath="$PROJECT_DIR$/Week3/Week3.iml" />
+    </modules>
+  </component>
+</project>
