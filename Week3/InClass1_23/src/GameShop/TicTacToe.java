@@ -24,7 +24,6 @@ public class TicTacToe {
         return aver;
     }
     public boolean validToken( char tok ){
-        // Menton that I changet these lines
         if ( Character.toUpperCase('X') == Character.toUpperCase(tok) ||
              Character.toUpperCase('O') == Character.toUpperCase(tok) ){
             return true;
