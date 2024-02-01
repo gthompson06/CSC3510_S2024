@@ -1,9 +1,9 @@
 package GameShop;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -13,6 +13,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TicTacToeTest {
     // New method ... validToken
+    @DisplayName( "Test Randmon NUmber")
+    @RepeatedTest( 10 )
+    void testGetRandom_ShouldwWork(RepetitionInfo rino, TestInfo tinfo ){
+        int max = 10;
+        char[][] board = new char[3][3];
+        TicTacToe ttt = new TicTacToe(board);
+        int actual = ttt.getRandomNumber( max );
+        System.out.printf("\n actual=%s", actual );
+        boolean result = ( actual >= 0 && actual <= max );
+        assertTrue( result );
+    }
+    @ParameterizedTest
+    @CsvSource( {
+            "'1,2,3' , 2.0",
+            "'5,6,7' , 6.0",
+            "'99,99,100', 99.333"
+    })
+    void testGetAver_WithVaidInput_ShouldWork( String inListStr, double expected){
+        System.out.printf("\nInStr:%s expected:%s", inListStr, expected);
+        int[] inList = convertStringToArray( inListStr);
+        char[][] board = new char[3][3];
+        TicTacToe ttt = new TicTacToe(board);
+        double actual = ttt.getAverage( inList );
+        assertEquals( expected, actual,.01 );
+    }
+
+    private int[] convertStringToArray(String inListStr) {
+        String[] values = inListStr.split(";");
+        String[] strVals = values[0].split(",");
+        int[] intList = new int[strVals.length];
+        for( int i=0; i<strVals.length; i++ ){
+            intList[i] = Integer.parseInt( strVals[i].trim());
+        }
+        return intList;
+    }
+
     @DisplayName("Valid Token Should be True")
     @ParameterizedTest
     @CsvSource( {
@@ -48,8 +84,19 @@ class TicTacToeTest {
       int actual = ttt.getLargest(x, y );
        assertEquals( expected, actual  );
    }
+    @DisplayName("Valid Token Should be TrueV using file")
 
-   @DisplayName("Valid Token Should be True")
+    @ParameterizedTest
+    @CsvFileSource( resources = "/input.csv")
+    @Disabled(" This test is under construction")
+    void testGetLargest_ValidInputFromFile_ShouldWork( int x, int y, int expected ){
+        //Arrange
+        char[][] board = new char[3][3];
+        TicTacToe ttt = new TicTacToe(board);
+        int actual = ttt.getLargest(x, y );
+        assertEquals( expected, actual  );
+    }
+   @DisplayName("Valid Token Should be True!")
    @ParameterizedTest
    @MethodSource( "getLargestIntParms")
    void testGetLargest_ValidInputWithStreams_ShouldWork( int x, int y, int expected ){

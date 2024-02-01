@@ -1,10 +1,27 @@
 package GameShop;
 
+import java.util.Random;
+
 public class TicTacToe {
     private char[][] board;
 
     public TicTacToe(char[][] board) {
         this.board = board;
+    }
+    public int getRandomNumber( int max ){
+        final int MIN = 0;
+        Random rn = new Random();
+        return rn.nextInt( max - MIN + 1 ) + MIN;
+    }
+    public double getAverage( int[] grades ){
+        double aver = 0.0;
+        double sum = 0;
+        for( double item: grades ){
+            sum += item;
+        }
+        if ( grades.length != 0 )
+            aver = sum/grades.length;
+        return aver;
     }
     public boolean validToken( char tok ){
         // Menton that I changet these lines
